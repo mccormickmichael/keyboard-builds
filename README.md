@@ -1,0 +1,1 @@
+Building a keyboard from scratch is a fun project.
