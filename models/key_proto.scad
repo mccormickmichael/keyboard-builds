@@ -5,8 +5,8 @@ key_size = 14;
 inter_key = 5;
 
 cell_size = key_size + inter_key;
-plat_x = keys_x * (cell_size) + inter_key;
-plat_y = keys_y * (cell_size) + inter_key;
+plat_x = keys_x * cell_size;
+plat_y = keys_y * cell_size;
 
 union() {
   difference() {
@@ -24,17 +24,26 @@ union() {
   }
   for (x = [-1, 1]) {
     for (y = [-1, 1]) {
-      translate([x*(cell_size*keys_x+1)/2, y*(cell_size*keys_y+1)/2, inter_key*1.5]) {
-        translate([0, -y*inter_key, 0]) {
+      translate([x*(plat_x-inter_key/2)/2, y*(plat_y-inter_key/2)/2, inter_key*1.5]) {
+        translate([0, -y*(inter_key+1), 0]) {
           difference() {
-            cube([inter_key-1, 3*inter_key-1, inter_key*3], center = true);
-            rotate([0, 90, 0]) {
-              cylinder(h=inter_key+1, r=inter_key/2, center = true, $fn=32);
+            cube([inter_key/2, 3*inter_key-1, inter_key*3], center = true);
+            translate([0, -y*inter_key/3, 0]) {
+              rotate([0, 90, 0]) {
+                cylinder(h=inter_key+1, r=inter_key/2, center = true, $fn=32);
+              }
             }
           }
         }
-        translate([-x*inter_key, 0, 0]) {
-          cube([3*inter_key-1, inter_key-1, inter_key*3], center = true);
+        translate([-x*(inter_key+1), 0, 0]) {
+          difference() {
+            cube([3*inter_key-1, inter_key/2, inter_key*3], center = true);
+            translate([-x*inter_key/3, 0, 0]) {
+              rotate([90, 0, 0]) {
+                cylinder(h=inter_key+1, r=inter_key/2, center = true, $fn=32);
+              }
+            }
+          }
         }
       }
     }
