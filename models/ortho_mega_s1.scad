@@ -25,7 +25,6 @@ module keyhole(x, y) {
 }
 
 // TODO: holes for lights, if you want them
-// TODO: bolt holes for attaching sections 2 and 5
 
 difference() {
   union() {
@@ -57,11 +56,3 @@ difference() {
   keyhole(plat_x/2 - 2*m_key_cell_x - m_key_cell_x/2, -plat_y/2 + key_cell + key_cell/2);
 
 }
-
-/*
-translate([-x*inter_key/3, 0, 0]) {
-                rotate([90, 0, 0]) {
-                  cylinder(h=inter_key, r=1.5, center = true, $fn=32);
-                }
-              }
-*/
