@@ -1,0 +1,11 @@
+* Keyboard Layout Experiments
+  These keyboard layouts are intended to be used with the [[http://www.keyboard-layout-editor.com][Keyboard Layout Editor]]
+** Layouts
+*** ortho_fat
+    This is a reduced layout with function keys. It is high relative to its width.
+*** ortho_full
+    This has a number pad on the left and function keys on the right.
+*** ortho_mega
+    This has a number pad on the left, wider control keys, and a separate area for whatever on the right.
+*** ortho_small
+    This is similar to a 60% keyboard.
