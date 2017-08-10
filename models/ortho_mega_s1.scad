@@ -7,7 +7,7 @@ m_key_sep = 13.5;
 border = 8;
 b_post = 8;
 m_post_s = 2;
-m_post_l = 5;
+m_post_l = 10;
 post_z = 15;
 
 key_cell = key_size + key_sep;
@@ -30,8 +30,18 @@ module keyhole(x, y) {
 difference() {
   union() {
     cube([plat_x, plat_y, 5], center = true);
-    for (t = [[-1, 1], [1, 1], [-1, -1]]) {
-      translate([t[0]*(plat_x-b_post)/2, t[1]*(plat_y-b_post)/2, -(plat_z + post_z)/2]) cube([b_post, b_post, post_z], center = true);
+    translate([-(plat_x-b_post)/2, -(plat_y-b_post)/2, -(plat_z + post_z)/2]) {
+      difference() {
+        cube([b_post, b_post, post_z], center = true);
+        rotate([90, 0, 0]) cylinder(h=b_post+1, r=2, center=true, $fn=32);
+      }
+    }
+    translate([-(plat_x-b_post)/2, (plat_y-b_post)/2, -(plat_z + post_z)/2]) cube([b_post, b_post, post_z], center = true);
+    translate([(plat_x-b_post)/2, (plat_y-b_post)/2, -(plat_z + post_z)/2]) {
+      difference() {
+        cube([b_post, b_post, post_z], center = true);
+        rotate([0, 90, 0]) cylinder(h=b_post+1, r=2, center=true, $fn=32);
+      }
     }
     translate([(plat_x - m_post_s)/2, -(plat_y - m_post_l)/2, -(plat_z + post_z)/2]) cube([m_post_s, m_post_l, post_z], center = true);
     translate([(plat_x - m_post_l)/2, -(plat_y - m_post_s)/2, -(plat_z + post_z)/2]) cube([m_post_l, m_post_s, post_z], center = true);
@@ -47,3 +57,11 @@ difference() {
   keyhole(plat_x/2 - 2*m_key_cell_x - m_key_cell_x/2, -plat_y/2 + key_cell + key_cell/2);
 
 }
+
+/*
+translate([-x*inter_key/3, 0, 0]) {
+                rotate([90, 0, 0]) {
+                  cylinder(h=inter_key, r=1.5, center = true, $fn=32);
+                }
+              }
+*/
