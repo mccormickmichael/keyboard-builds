@@ -15,7 +15,7 @@ module keyhole(x, y) {
 }
 
 module e_post(x, y, z) {
-  translate([x, y, z]) {
+  translate([x, y, -(plat_z + post_z)/2]) {
     cube([b_post, b_post, post_z], center = true);
   }
 }
