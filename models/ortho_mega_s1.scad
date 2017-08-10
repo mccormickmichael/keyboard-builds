@@ -17,12 +17,7 @@ plat_x = border + 4*key_cell + m_key_cell_x;
 plat_y = border + 3*key_cell;
 plat_z = 5;
 
-module keyhole(x, y) {
-  translate([x, y, 0]) {
-    cube([key_size, key_size, plat_z + 1], center = true);
-    cube([key_size + 1, key_size + 1, plat_z -2], center = true);
-  }
-}
+include <common.scad>
 
 // TODO: holes for lights, if you want them
 
