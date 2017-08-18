@@ -1,56 +1,35 @@
-keys_x = 4;
-keys_y = 4;
+/* key_height = 10; */
+/* bottom_size = 18; */
+/* top_x_size = 13; */
+/* top_y_size = 15; */
 
-key_size = 14;
-inter_key = 5;
+/* difference() { */
+/*   linear_extrude(height = key_height, scale = [top_x_size / bottom_size, top_y_size / bottom_size]) { */
+/*     square(size=18, center=true); */
+/*   } */
+/*   translate([0, 0, 5]) { */
+/*     cube([3, 1.1, 15], center = true); */
+/*     cube([1, 3, 15], center = true); */
+/*   } */
+/*   rotate([90, 0, 0]) { */
+/*     translate([0, 30, 0]) { */
+/*      cylinder(r=21, h = top_y_size + 2, center = true, $fn=180); */
+/*     } */
+/*   } */
+/* } */
+/* rotate([90, 0, 0]) { */
+/*   translate([0, 20, 0]) { */
+/*       cylinder(r=11, h=10, $fn=180); */
+/*     } */
+/*   } */
 
-cell_size = key_size + inter_key;
-plat_x = keys_x * cell_size;
-plat_y = keys_y * cell_size;
-
-difference() {
-  union() {
-    cube([plat_x, plat_y, 5], center = true);
-    for (x = [-1, 1]) {
-      for (y = [-1, 1]) {
-        translate([x*(plat_x-inter_key/2)/2, y*(plat_y-inter_key/2)/2, inter_key*1.5]) {
-          translate([0, -y*(inter_key+1), 0]) {
-            difference() {
-              cube([inter_key/2, 3*inter_key-1, inter_key*3], center = true);
-              translate([0, -y*inter_key/3, 0]) {
-                rotate([0, 90, 0]) {
-                  cylinder(h=inter_key, r=inter_key/2, center = true, $fn=32);
-                }
-              }
-            }
-          }
-          translate([-x*(inter_key+1), 0, 0]) {
-            difference() {
-              cube([3*inter_key-1, inter_key/2, inter_key*3], center = true);
-              translate([-x*inter_key/3, 0, 0]) {
-                rotate([90, 0, 0]) {
-                  cylinder(h=inter_key, r=inter_key/2, center = true, $fn=32);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  for (yk = [0:(keys_y - 1)]) {
-    translate([-cell_size*(keys_x - 1)/2, -cell_size*(keys_y - 1)/2 + cell_size * yk, 0]) {
-      for (xk = [0:(keys_x - 1)]) {
-        translate([cell_size * xk, 0, 0]) {
-          cube([key_size, key_size, 6], center = true);
-          cube([key_size + 1, key_size + 1, 2], center = true);
-        }
-      }
+union() {
+  cylinder(r=8, h=2, center=true, $fn=36);
+  translate([0, 0, 5]) {
+    difference() {
+      cube([7, 5, 10], center=true);
+      cube([5, 1.4, 12], center=true);
+      cube([1.3, 6, 12], center=true);
     }
   }
 }
-        
-
-
-//TODO: consider a snap-in ring around the inside of the insert
-//TODO: 4x4, 19mm on center
