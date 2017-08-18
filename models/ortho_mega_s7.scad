@@ -27,7 +27,7 @@ difference() {
       keyhole(-plat_x/2 + key_cell/2 + x*key_cell, plat_y/2 - key_cell/2 - y*key_cell);
     }
   }
-  keyhole(-plat_x/2 + l_key_cell_x/2, plat_y/2 - key_cell/2 - 2*key_cell);
+  double_wide(-plat_x/2 + l_key_cell_x/2, plat_y/2 - key_cell/2 - 2*key_cell);
   keyhole(-plat_x/2 + l_key_cell_x + m_key_cell_x/2, plat_y/2 - key_cell/2 - 2*key_cell);
   keyhole(-plat_x/2 + l_key_cell_x + +m_key_cell_x + m_key_cell_x/2, plat_y/2 - key_cell/2 - 2*key_cell);
 }

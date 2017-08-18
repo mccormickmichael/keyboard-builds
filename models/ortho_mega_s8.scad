@@ -30,8 +30,7 @@ difference() {
     }
   }
   keyhole(-plat_x/2 + key_cell/2, plat_y/2 - key_cell/2);
-  // TODO: large key brace holders
-  keyhole(-plat_x/2 + key_cell + l_key_cell_x/2, plat_y/2 - key_cell/2);
+  double_wide(-plat_x/2 + key_cell + l_key_cell_x/2, plat_y/2 - key_cell/2);
   for (x = [0:1]) {
     keyhole(plat_x/2 - border - key_cell/2 - x*key_cell, plat_y/2 - key_cell/2);
   }
