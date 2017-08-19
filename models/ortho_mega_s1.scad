@@ -8,7 +8,7 @@ plat_y = border + 3*key_cell;
 
 use <common.scad>
 
-// TODO: holes for lights, if you want them
+// TODO: holes for lights or a display, if you want them
 
 difference() {
   union() {
