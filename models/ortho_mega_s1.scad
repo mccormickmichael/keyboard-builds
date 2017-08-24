@@ -30,4 +30,14 @@ difference() {
   keyhole(plat_x/2 - m_key_cell_x - m_key_cell_x/2, -plat_y/2 + key_cell + key_cell/2);
   keyhole(plat_x/2 - 2*m_key_cell_x - m_key_cell_x/2, -plat_y/2 + key_cell + key_cell/2);
 
+  translate([-16, plat_y/2-border-key_cell/2+2, 0]) {
+    cube([32, 12, plat_z + 1], center=true);
+//    translate([0,0,-plat_z/2]) cube([34.6, 21, plat_z -3], center=true);
+    for(xt=[-1, 1]) {
+      for(yt=[-1, 1]) {
+        translate([xt*15, yt*8.25, -plat_z/2]) cylinder(h=5, r=1, center=true, $fn=32);
+      }
+    }      
+  }
+
 }
