@@ -24,4 +24,8 @@ union() {
       cube([1.2, 6, 12], center=true);
     }
   }
+  translate([(18-7)/2, 0, 0.2]) cube([(18-6)/2, 0.8, 0.4], center=true);
+  translate([-(18-7)/2, 0, 0.2]) cube([(18-6)/2, 0.8, 0.4], center=true);
+  translate([2, (18-7)/2, 0.2]) cube([0.8, (18-5)/2, 0.4], center=true);
+  translate([-2, -(18-7)/2, 0.2]) cube([0.8, (18-5)/2, 0.4], center=true);
 }
